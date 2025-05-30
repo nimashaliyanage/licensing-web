@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { Card, CardContent } from "./ui/card"
 import { Button } from "./ui/button"
 import { Input } from "./ui/input"
@@ -5,8 +6,15 @@ import { Badge } from "./ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs"
 import { Plus, Search, Filter, Download } from "lucide-react"
 import { mockLicenses } from "../data/mockData"
+import NewSubscription from "./NewSubscription"
 
-export default function LicenseManagement() {
+export default function Subscription() {
+  const [showNewSubscription, setShowNewSubscription] = useState(false)
+
+  if (showNewSubscription) {
+    return <NewSubscription onCancel={() => setShowNewSubscription(false)} />
+  }
+
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
@@ -14,9 +22,9 @@ export default function LicenseManagement() {
           <h3 className="text-lg font-medium">Subscription</h3>
           <p className="text-sm text-muted-foreground">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum gravida commodo nulla gravida sodales.</p>
         </div>
-        <Button>
+        <Button onClick={() => setShowNewSubscription(true)}>
           <Plus className="mr-2 h-4 w-4" />
-          Generate License
+          New Subscription
         </Button>
       </div>
 
