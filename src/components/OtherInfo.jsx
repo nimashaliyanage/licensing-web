@@ -43,13 +43,6 @@ export default function OtherInfo() {
             </div>
 
             <div className="flex items-center space-x-2">
-              <Checkbox id="online-signature" />
-              <label htmlFor="online-signature" className="text-sm font-medium">
-                Online signature?
-              </label>
-            </div>
-
-            <div className="flex items-center space-x-2">
               <Checkbox id="online-payment" />
               <label htmlFor="online-payment" className="text-sm font-medium">
                 Online payment?
@@ -78,109 +71,6 @@ export default function OtherInfo() {
                 <SelectContent>
                   <SelectItem value="1">Tag 1</SelectItem>
                   <SelectItem value="2">Tag 2</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
-        </div>
-
-        {/* INVOICING Section */}
-        <div className="space-y-4">
-          <h3 className="font-semibold text-lg">INVOICING</h3>
-          <div className="space-y-4">
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Fiscal Position?</label>
-              <Select>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select position" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="1">Position 1</SelectItem>
-                  <SelectItem value="2">Position 2</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Project</label>
-              <Select>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select project" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="1">Project 1</SelectItem>
-                  <SelectItem value="2">Project 2</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
-        </div>
-
-        {/* DELIVERY Section */}
-        <div className="space-y-4">
-          <h3 className="font-semibold text-lg">DELIVERY</h3>
-          <div className="space-y-4">
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Warehouse</label>
-              <Select>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select warehouse" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="1">Warehouse 1</SelectItem>
-                  <SelectItem value="2">Warehouse 2</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Incoterm?</label>
-              <Select>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select incoterm" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="1">Incoterm 1</SelectItem>
-                  <SelectItem value="2">Incoterm 2</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Incoterm Location</label>
-              <Select>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select location" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="1">Location 1</SelectItem>
-                  <SelectItem value="2">Location 2</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Shipping Policy?</label>
-              <Select>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select policy" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="1">Policy 1</SelectItem>
-                  <SelectItem value="2">Policy 2</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Delivery Date?</label>
-              <Select>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select date" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="1">Date 1</SelectItem>
-                  <SelectItem value="2">Date 2</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -257,6 +147,28 @@ export default function OtherInfo() {
             </div>
           </div>
         </div>
+
+
+        {/* INVOICING Section */}
+        <div className="space-y-4">
+          <h3 className="font-semibold text-lg">INVOICING</h3>
+          <div className="space-y-4">
+
+            <div className="space-y-2">
+              <label className="text-sm font-medium">Project</label>
+              <Select>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select project" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="1">Project 1</SelectItem>
+                  <SelectItem value="2">Project 2</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   )

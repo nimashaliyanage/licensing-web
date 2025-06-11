@@ -60,17 +60,6 @@ export default function Sidebar({ activeTab, setActiveTab, sidebarOpen, setSideb
             Customers
           </Button>
 
-          <Button
-            onClick={() => setActiveTab("analytics")}
-            className={`w-full justify-start hover:bg-[#606060] ${activeTab === "analytics"
-              ? "bg-blue-600 text-white"
-              : "text-white hover:bg-[#505050]"
-              }`}
-          >
-           <TrendingUp className="mr-3 h-4 w-4" />
-            Analytics
-          </Button>
-
            <Button
             onClick={() => setActiveTab("security")}
             className={`w-full justify-start hover:bg-[#606060] ${activeTab === "security"
@@ -78,7 +67,7 @@ export default function Sidebar({ activeTab, setActiveTab, sidebarOpen, setSideb
               : "text-white hover:bg-[#505050]"
               }`}
           >
-          <Shield className="mr-3 h-4 w-4" />
+            <Shield className="mr-3 h-4 w-4" />
             Security
           </Button>
 
@@ -89,7 +78,7 @@ export default function Sidebar({ activeTab, setActiveTab, sidebarOpen, setSideb
               : "text-white hover:bg-[#505050]"
               }`}
           >
-          <Settings className="mr-3 h-4 w-4" />
+            <Settings className="mr-3 h-4 w-4" />
             Settings
           </Button> 
         </div>

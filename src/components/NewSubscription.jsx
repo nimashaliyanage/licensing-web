@@ -212,7 +212,6 @@ export default function NewSubscription() {
       <Tabs defaultValue="orderLines" className="w-full">
         <TabsList>
           <TabsTrigger value="orderLines">Order Lines</TabsTrigger>
-          <TabsTrigger value="optionalProducts">Optional Products</TabsTrigger>
           <TabsTrigger value="otherInfo">Other Info</TabsTrigger>
         </TabsList>
 
@@ -224,10 +223,7 @@ export default function NewSubscription() {
                   <thead className="border-b bg-black text-white">
                     <tr>
                       <th className="text-left p-4 font-medium">Product</th>
-                      <th className="text-left p-4 font-medium">Quantity</th>
-                      <th className="text-left p-4 font-medium">Unit</th>
-                      <th className="text-left p-4 font-medium">Unit Price</th>
-                      <th className="text-left p-4 font-medium">Taxes</th>
+                      <th className="text-left p-4 font-medium">Price</th>
                       <th className="text-left p-4 font-medium">Disc. %</th>
                       <th className="text-left p-4 font-medium">Amount</th>
                     </tr>
@@ -251,19 +247,10 @@ export default function NewSubscription() {
                           <Input type="number" className="w-20" />
                         </td>
                         <td className="p-4">
-                          <Input type="text" className="w-20" />
-                        </td>
-                        <td className="p-4">
                           <Input type="number" className="w-28" />
                         </td>
                         <td className="p-4">
                           <Input type="number" className="w-20" />
-                        </td>
-                        <td className="p-4">
-                          <Input type="number" className="w-20" />
-                        </td>
-                        <td className="p-4">
-                          <Input type="number" className="w-28" />
                         </td>
                       </tr>
                     ))}
@@ -275,60 +262,6 @@ export default function NewSubscription() {
           <Button onClick={addProduct}>+ Add Product</Button>
         </TabsContent>
 
-        <TabsContent value="optionalProducts" className="space-y-4">
-          <Card>
-            <CardContent className="p-0">
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead className="border-b bg-black text-white">
-                    <tr>
-                      <th className="text-left p-4 font-medium">Product</th>
-                      <th className="text-left p-4 font-medium">Description</th>
-                      <th className="text-left p-4 font-medium">Quantity</th>
-                      <th className="text-left p-4 font-medium">Unit</th>
-                      <th className="text-left p-4 font-medium">Unit Price</th>
-                      <th className="text-left p-4 font-medium">Disc. %</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {optionalProducts.map((product) => (
-                      <tr key={product.id} className="border-b">
-                        <td className="p-4">
-                         <Select>
-                            <SelectTrigger>
-                              <SelectValue placeholder="Select product" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              <SelectItem value="product1" onClick={() => setSelectedProduct("product1")}>Product 1</SelectItem>
-                              <SelectItem value="product2" onClick={() => setSelectedProduct("product2")}>Product 2</SelectItem>
-                              <SelectItem value="product3" onClick={() => setSelectedProduct("product3")}>Product 3</SelectItem>
-                            </SelectContent>
-                          </Select>
-                        </td>
-                        <td className="p-4">
-                          <Input type="text" className="w-full" />
-                        </td>
-                        <td className="p-4">
-                          <Input type="number" className="w-20" />
-                        </td>
-                        <td className="p-4">
-                          <Input type="text" className="w-20" />
-                        </td>
-                        <td className="p-4">
-                          <Input type="number" className="w-28" />
-                        </td>
-                        <td className="p-4">
-                          <Input type="number" className="w-20" />
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </CardContent>
-          </Card>
-          <Button onClick={addOptionalProduct}>+ Add Product</Button>
-        </TabsContent>
 
         <TabsContent value="otherInfo">
           <Card>

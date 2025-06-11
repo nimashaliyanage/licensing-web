@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card"
 import { Badge } from "./ui/badge"
 import { Key, Activity, TrendingUp, Users } from "lucide-react"
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 import { mockStats, mockLicenses, mockProducts } from "../data/mockData"
 
 export default function Dashboard() {
@@ -9,7 +10,7 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Licenses</CardTitle>
+            <CardTitle className="text-sm font-medium">Total Subscription</CardTitle>
             <Key className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -19,7 +20,7 @@ export default function Dashboard() {
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Active Licenses</CardTitle>
+            <CardTitle className="text-sm font-medium">Active Subscription</CardTitle>
             <Activity className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -52,7 +53,7 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <Card>
           <CardHeader>
-            <CardTitle>Recent License Activity</CardTitle>
+            <CardTitle>Recent Subscription Activity</CardTitle>
             <CardDescription>Latest license activations and validations</CardDescription>
           </CardHeader>
           <CardContent>
@@ -76,20 +77,14 @@ export default function Dashboard() {
             <CardDescription>Best performing products by license count</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
-              {mockProducts.map((product) => (
-                <div key={product.id} className="flex items-center justify-between">
-                  <div>
-                    <p className="font-medium">{product.name}</p>
-                    <p className="text-sm text-muted-foreground">v{product.version}</p>
-                  </div>
-                  <div className="text-right">
-                    <p className="font-medium">{product.licenses}</p>
-                    <p className="text-sm text-muted-foreground">licenses</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart data={mockProducts}>
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Bar dataKey="licenses" fill="#428aff" radius={[4, 4, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
           </CardContent>
         </Card>
       </div>

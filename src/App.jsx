@@ -6,13 +6,18 @@ import Dashboard from "./components/Dashboard"
 import Subscription from "./components/Subscription"
 import ProductManagement from "./components/ProductManagement"
 import CustomerManagement from "./components/CustomerManagement"
-import Analytics from "./components/Analytics"
 import Security from "./components/Security"
 import Settings from "./components/Settings"
 
 export default function App() {
   const [activeTab, setActiveTab] = useState("dashboard")
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [settingsTab, setSettingsTab] = useState("general")
+
+  const handleViewAllNotifications = () => {
+    setActiveTab("settings")
+    setSettingsTab("notifications")
+  }
 
   const renderContent = () => {
     switch (activeTab) {
@@ -24,12 +29,10 @@ export default function App() {
         return <ProductManagement />
       case "customers":
         return <CustomerManagement />
-      case "analytics":
-        return <Analytics />
       case "security":
         return <Security />
       case "settings":
-        return <Settings />
+        return <Settings defaultTab={settingsTab} />
       default:
         return <Dashboard />
     }
@@ -44,7 +47,11 @@ export default function App() {
         setSidebarOpen={setSidebarOpen}
       />
       <div className="flex-1 flex flex-col overflow-hidden lg:ml-0">
-        <Header activeTab={activeTab} setSidebarOpen={setSidebarOpen} />
+        <Header
+          activeTab={activeTab}
+          setSidebarOpen={setSidebarOpen}
+          onViewAllNotifications={handleViewAllNotifications}
+        />
         <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-6">{renderContent()}</main>
       </div>
       {sidebarOpen && (
