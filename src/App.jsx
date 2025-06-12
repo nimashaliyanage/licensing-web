@@ -6,17 +6,23 @@ import Dashboard from "./components/Dashboard"
 import Subscription from "./components/Subscription"
 import ProductManagement from "./components/ProductManagement"
 import CustomerManagement from "./components/CustomerManagement"
-import Security from "./components/Security"
 import Settings from "./components/Settings"
+import Invoice from "./components/Invoice"
+import AuthContainer from "./components/auth/AuthContainer"
 
 export default function App() {
   const [activeTab, setActiveTab] = useState("dashboard")
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [settingsTab, setSettingsTab] = useState("general")
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
 
   const handleViewAllNotifications = () => {
     setActiveTab("settings")
     setSettingsTab("notifications")
+  }
+
+  const handleAuthSuccess = () => {
+    setIsAuthenticated(true)
   }
 
   const renderContent = () => {
@@ -29,13 +35,17 @@ export default function App() {
         return <ProductManagement />
       case "customers":
         return <CustomerManagement />
-      case "security":
-        return <Security />
       case "settings":
         return <Settings defaultTab={settingsTab} />
+      case "invoice":
+        return <Invoice />
       default:
         return <Dashboard />
     }
+  }
+
+  if (!isAuthenticated) {
+    return <AuthContainer onAuthSuccess={handleAuthSuccess} />
   }
 
   return (

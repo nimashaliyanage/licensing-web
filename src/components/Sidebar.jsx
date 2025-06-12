@@ -1,5 +1,5 @@
 import { Button } from "./ui/button"
-import { BarChart3, Key, Users, Package, Shield, TrendingUp, Settings, X } from "lucide-react"
+import { BarChart3, Key, Users, Package, Shield, TrendingUp, Settings, X, FileText } from "lucide-react"
 
 export default function Sidebar({ activeTab, setActiveTab, sidebarOpen, setSidebarOpen }) {
   return (
@@ -60,15 +60,15 @@ export default function Sidebar({ activeTab, setActiveTab, sidebarOpen, setSideb
             Customers
           </Button>
 
-           <Button
-            onClick={() => setActiveTab("security")}
-            className={`w-full justify-start hover:bg-[#606060] ${activeTab === "security"
+          <Button
+           onClick={() => setActiveTab("invoice")}
+            className={`w-full justify-start hover:bg-[#606060] ${activeTab === "invoice"
               ? "bg-blue-600 text-white"
               : "text-white hover:bg-[#505050]"
               }`}
           >
-            <Shield className="mr-3 h-4 w-4" />
-            Security
+            <FileText className="mr-3 h-4 w-4" />
+            Invoice
           </Button>
 
           <Button
@@ -80,7 +80,7 @@ export default function Sidebar({ activeTab, setActiveTab, sidebarOpen, setSideb
           >
             <Settings className="mr-3 h-4 w-4" />
             Settings
-          </Button> 
+          </Button>
         </div>
       </nav>
     </div>

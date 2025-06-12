@@ -119,8 +119,7 @@ export default function Settings({ defaultTab = "general" }) {
       <Tabs defaultValue={defaultTab} className="w-full">
         <TabsList>
           <TabsTrigger value="general">General</TabsTrigger>
-          <TabsTrigger value="api">API & SDK</TabsTrigger>
-          <TabsTrigger value="payments">Payments</TabsTrigger>
+          <TabsTrigger value="api">API Key</TabsTrigger>
           <TabsTrigger value="notifications">Notifications</TabsTrigger>
         </TabsList>
 
@@ -143,25 +142,24 @@ export default function Settings({ defaultTab = "general" }) {
               </div>
             </CardContent>
           </Card>
-
           <Card>
-            <CardHeader>
-              <CardTitle>License Defaults</CardTitle>
-              <CardDescription>Default settings for new licenses</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="text-sm font-medium">Default License Type</label>
-                  <Input defaultValue="Perpetual" />
-                </div>
-                <div>
-                  <label className="text-sm font-medium">Trial Period (days)</label>
-                  <Input defaultValue="30" />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+                  <CardContent className="p-0">
+                    <div className="overflow-x-auto">
+                      <table className="w-full">
+                        <thead className="border-b bg-black text-white">
+                          <tr>
+                            <th className="text-left p-4 font-medium">Company Name</th>
+                            <th className="text-left p-4 font-medium">Company Email</th>
+                            <th className="text-left p-4 font-medium">Expire Date</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                      
+                        </tbody>
+                      </table>
+                    </div>
+                  </CardContent>
+                </Card>
         </TabsContent>
 
         <TabsContent value="api" className="space-y-6">
@@ -174,58 +172,22 @@ export default function Settings({ defaultTab = "general" }) {
               <div>
                 <label className="text-sm font-medium">API Key</label>
                 <div className="flex gap-2">
-                  <Input value="sk_live_..." readOnly />
+                  <Input type="text" placeholder="sk_live_..." />
                   <Button variant="outline">Regenerate</Button>
                 </div>
               </div>
               <div>
-                <label className="text-sm font-medium">Webhook URL</label>
+                <label className="text-sm font-medium">Website URL</label>
                 <Input placeholder="https://yourapp.com/webhooks/license" />
               </div>
+              <div>
+                <label className="text-sm font-medium">Expire Date</label>
+                <Input type="date" />
+              </div>
+
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>SDK Downloads</CardTitle>
-              <CardDescription>Download SDKs for popular programming languages</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <Button variant="outline" className="h-20 flex-col">
-                  <span className="font-medium">Python SDK</span>
-                  <span className="text-sm text-muted-foreground">v2.1.0</span>
-                </Button>
-                <Button variant="outline" className="h-20 flex-col">
-                  <span className="font-medium">C# SDK</span>
-                  <span className="text-sm text-muted-foreground">v1.8.3</span>
-                </Button>
-                <Button variant="outline" className="h-20 flex-col">
-                  <span className="font-medium">Java SDK</span>
-                  <span className="text-sm text-muted-foreground">v1.5.2</span>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        <TabsContent value="payments" className="space-y-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>Payment Gateway</CardTitle>
-              <CardDescription>Configure payment processing for subscriptions</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div>
-                <label className="text-sm font-medium">Payment Provider</label>
-                <Input defaultValue="Stripe" />
-              </div>
-              <div>
-                <label className="text-sm font-medium">Currency</label>
-                <Input defaultValue="USD" />
-              </div>
-            </CardContent>
-          </Card>
         </TabsContent>
 
         <TabsContent value="notifications" className="space-y-6">
@@ -295,9 +257,8 @@ export default function Settings({ defaultTab = "general" }) {
                   filteredNotifications.map((notification) => (
                     <div
                       key={notification.id}
-                      className={`flex items-start space-x-4 p-4 rounded-lg border ${
-                        !notification.read ? "bg-blue-50 border-blue-200" : "bg-white"
-                      }`}
+                      className={`flex items-start space-x-4 p-4 rounded-lg border ${!notification.read ? "bg-blue-50 border-blue-200" : "bg-white"
+                        }`}
                     >
                       <div className="flex-shrink-0 mt-1">{getIcon(notification.type)}</div>
                       <div className="flex-1 min-w-0">
