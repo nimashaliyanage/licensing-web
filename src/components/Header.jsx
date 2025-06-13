@@ -1,6 +1,7 @@
 import { Button } from "./ui/button"
 import { Bell, Menu } from "lucide-react"
 import NotificationDropdown from "./NotificationDropdown"
+import ProfileDropdown from "./ProfileDropdown"
 
 export default function Header({ activeTab, setSidebarOpen, onViewAllNotifications }) {
   return (
@@ -16,9 +17,7 @@ export default function Header({ activeTab, setSidebarOpen, onViewAllNotificatio
         </div>
         <div className="flex items-center space-x-4">
            <NotificationDropdown onViewAllNotifications={onViewAllNotifications} />
-          <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
-            A
-          </div>
+          <ProfileDropdown />
         </div>
       </div>
     </header>

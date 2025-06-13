@@ -170,8 +170,8 @@ export default function Invoice() {
           <p className="text-sm text-muted-foreground">Create invoices for software licenses and process payments</p>
         </div>
         <Button onClick={resetForm} variant="outline">
-          <Plus className="mr-2 h-4 w-4" />
-          New Invoice
+         
+          Reset Invoice
         </Button>
       </div>
 
@@ -335,29 +335,9 @@ export default function Invoice() {
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium mb-2">Number of Users</label>
-                        <Input
-                          type="number"
-                          min="1"
-                          value={item.users}
-                          onChange={(e) => updateInvoiceItem(item.id, "users", Number.parseInt(e.target.value) || 1)}
-                        />
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium mb-2">Price per User</label>
-                        <Input
-                          type="number"
-                          step="0.01"
-                          value={item.price}
-                          onChange={(e) => updateInvoiceItem(item.id, "price", Number.parseFloat(e.target.value) || 0)}
-                        />
-                      </div>
-
-                      <div>
                         <label className="block text-sm font-medium mb-2">Total Amount</label>
                         <div className="flex items-center gap-2">
-                          <Input value={`$${item.total.toFixed(2)}`} readOnly />
+                          <Input value={`$${item.total.toFixed(2)}`}/>
                           <Button
                             variant="outline"
                             size="sm"
@@ -394,30 +374,6 @@ export default function Invoice() {
               </div>
             </CardContent>
           </Card>
-
-          {/* Notes and Terms */}
-          <Card>
-            <CardHeader>
-              <CardTitle>License Terms & Conditions</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium mb-2">Additional Notes</label>
-                <Textarea
-                  placeholder="Add any additional notes about the software licenses..."
-                  value={invoiceDetails.notes}
-                  onChange={(e) => setInvoiceDetails({ ...invoiceDetails, notes: e.target.value })}
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-2">License Terms</label>
-                <Textarea
-                  value={invoiceDetails.terms}
-                  onChange={(e) => setInvoiceDetails({ ...invoiceDetails, terms: e.target.value })}
-                />
-              </div>
-            </CardContent>
-          </Card>
         </div>
 
         {/* Payment Section */}
@@ -436,14 +392,10 @@ export default function Invoice() {
                   <span>Subtotal:</span>
                   <span>${calculateSubtotal().toFixed(2)}</span>
                 </div>
-                <div className="flex justify-between">
-                  <span>Digital Tax/VAT (15%):</span>
-                  <span>${calculateDigitalTax().toFixed(2)}</span>
-                </div>
                 <div className="border-t pt-2">
                   <div className="flex justify-between font-bold text-lg">
                     <span>Total:</span>
-                    <span>${calculateTotal().toFixed(2)}</span>
+                    <span>${calculateSubtotal().toFixed(2)}</span>
                   </div>
                 </div>
               </div>
@@ -538,11 +490,11 @@ export default function Invoice() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">Routing Number</label>
+                    <label className="block text-sm font-medium mb-2">Branch Name</label>
                     <Input
-                      value={bankDetails.routingNumber}
-                      onChange={(e) => setBankDetails({ ...bankDetails, routingNumber: e.target.value })}
-                      placeholder="021000021"
+                      value={bankDetails.branchName}
+                      onChange={(e) => setBankDetails({ ...bankDetails, branchName: e.target.value })}
+                      placeholder="Main Branch"
                     />
                   </div>
                 </div>
@@ -571,7 +523,7 @@ export default function Invoice() {
               ) : (
                 <>
                   <CreditCard className="mr-2 h-4 w-4" />
-                  Pay ${calculateTotal().toFixed(2)} & Generate Licenses
+                  Pay ${calculateSubtotal().toFixed(2)} & Generate Licenses
                 </>
               )}
             </Button>

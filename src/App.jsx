@@ -1,5 +1,5 @@
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Sidebar from "./components/Sidebar"
 import Header from "./components/Header"
 import Dashboard from "./components/Dashboard"
@@ -9,6 +9,7 @@ import CustomerManagement from "./components/CustomerManagement"
 import Settings from "./components/Settings"
 import Invoice from "./components/Invoice"
 import AuthContainer from "./components/auth/AuthContainer"
+import Profile from "./components/Profile"
 
 export default function App() {
   const [activeTab, setActiveTab] = useState("dashboard")
@@ -39,10 +40,26 @@ export default function App() {
         return <Settings defaultTab={settingsTab} />
       case "invoice":
         return <Invoice />
+      case "profile":
+        return <Profile />
       default:
         return <Dashboard />
     }
   }
+
+   useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.setActiveTab = setActiveTab
+      window.setIsAuthenticated = setIsAuthenticated
+    }
+
+    return () => {
+      if (typeof window !== "undefined") {
+        delete window.setActiveTab
+        delete window.setIsAuthenticated
+      }
+    }
+  }, [])
 
   if (!isAuthenticated) {
     return <AuthContainer onAuthSuccess={handleAuthSuccess} />
